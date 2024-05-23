@@ -31,6 +31,8 @@ app.get('/*', (req, res) => {
       
     const grayscale = /[g]/.test(options);
     const young = /[y]/.test(options);
+    const old = /[o]/.test(options);
+    const johnWick = /[jw]/.test(options);
   
     let getPhotoAttempts = 0;
     const getPhoto = () => {
@@ -39,6 +41,8 @@ app.get('/*', (req, res) => {
 
       if (
         (young === true && chosenPhoto.young !== true) ||
+        (old === true && chosenPhoto.old !== true) ||
+        (johnWick === true && chosenPhoto['john-wick'] !== true) ||
         (ratio < 0.75 && chosenPhotoRatio > 1) ||
         (ratio > 1.25 && chosenPhotoRatio < 1)
       ) {
